@@ -41,6 +41,10 @@ def calcular_salario_total(entidad, nivel):
     salario_total_anual = salario_base * num_pagas_base
     return salario_total_anual
 
+# Función para formatear números al estilo europeo
+def formatear_europeo(valor):
+    return f"{valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
 # Interfaz de usuario con Streamlit
 st.title("Comparativa Salarial Unicaja")
 
@@ -58,12 +62,20 @@ if st.button("Calcular Comparativa"):
     # Diferencia salarial con Unicaja
     diferencia = salario_total_unicaja - salario_total_entidad
 
-    # Mostrar los resultados con formato de millares
-    st.write(f"**Salario total anual en {entidad}:** {salario_total_entidad:,.2f} €")
-    st.write(f"**Salario total anual en Unicaja:** {salario_total_unicaja:,.2f} €")
-    st.write(f"**Diferencia ajustada a favor de Unicaja:** {diferencia:,.2f} €")
+    # Mostrar los resultados con formato europeo
+    st.write(f"**Salario total anual en {entidad}:** {formatear_europeo(salario_total_entidad)} €")
+    st.write(f"**Salario total anual en Unicaja:** {formatear_europeo(salario_total_unicaja)} €")
 
-# Texto adicional con formato
+    # Texto de diferencia en un recuadro resaltado y centrado
+    st.markdown(f"""
+        <div style='text-align: center; margin-top: 20px;'>
+            <div style='display: inline-block; padding: 15px; background-color: #f0f0f5; border-radius: 10px; width: 80%;'>
+                <h3 style='color: #333; font-weight: bold;'>Diferencia ajustada a favor de Unicaja: {formatear_europeo(diferencia)} €</h3>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+# Texto adicional centrado con estilo
 st.markdown("<br>", unsafe_allow_html=True)
-st.markdown("<h5 style='color: #555555;'>Comparativa calculada sobre Salario Base y número de pagas anuales con importe de 2024.</h5>", unsafe_allow_html=True)
-st.markdown("<p style='font-size: 12px; color: #777777;'>La diferencia retributiva es acumulable anualmente, en 2023 la cantidad es la misma.</p>", unsafe_allow_html=True)
+st.markdown("<h5 style='text-align: center; color: #555555;'>Comparativa calculada sobre Salario Base y número de pagas anuales con importe de 2024.</h5>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-size: 12px; color: #777777;'>La diferencia retributiva es acumulable anualmente, en 2023 la cantidad es la misma.</p>", unsafe_allow_html=True)

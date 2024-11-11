@@ -10,7 +10,7 @@ pagas_dict = {
     'Liberbank': {'num_pagas_base': 17.5}  # Mismos valores que "Cajastur"
 }
 
-# Diccionario de salarios base mensuales por nivel
+# Incluye todos los niveles hasta NIVEL XIII
 salario_dict = {
     'NIVEL I': {'salario_mensual': 2829.985},
     'NIVEL II': {'salario_mensual': 2382.6216666666664},
@@ -58,7 +58,12 @@ if st.button("Calcular Comparativa"):
     # Diferencia salarial con Unicaja
     diferencia = salario_total_unicaja - salario_total_entidad
 
-    # Mostrar los resultados
-    st.write(f"Salario total anual en {entidad}: {salario_total_entidad:.2f} €")
-    st.write(f"Salario total anual en Unicaja: {salario_total_unicaja:.2f} €")
-    st.write(f"Diferencia ajustada a favor de Unicaja: {diferencia:.2f} €")
+    # Mostrar los resultados con formato de millares
+    st.write(f"**Salario total anual en {entidad}:** {salario_total_entidad:,.2f} €")
+    st.write(f"**Salario total anual en Unicaja:** {salario_total_unicaja:,.2f} €")
+    st.write(f"**Diferencia ajustada a favor de Unicaja:** {diferencia:,.2f} €")
+
+# Texto adicional con formato
+st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("<h5 style='color: #555555;'>Comparativa calculada sobre Salario Base y número de pagas anuales con importe de 2024.</h5>", unsafe_allow_html=True)
+st.markdown("<p style='font-size: 12px; color: #777777;'>La diferencia retributiva es acumulable anualmente, en 2023 la cantidad es la misma.</p>", unsafe_allow_html=True)

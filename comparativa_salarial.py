@@ -48,6 +48,9 @@ def calcular_salario_total(entidad, nivel):
 def formatear_europeo(valor):
     return f"{valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
+# Cargar el logo desde un archivo local o URL
+st.image("logo.png", width=200)  # Ajusta el tamaño según lo necesario
+
 # Interfaz de usuario con Streamlit
 st.title("Comparativa Salarial Unicaja")
 

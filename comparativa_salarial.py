@@ -4,7 +4,7 @@
 st.set_page_config(page_title="Comparativa Salarial Unicaja", page_icon="💼")
 
 #logo de pagina
-st.image("https://drive.google.com/file/d/1qkYxyl0lPql_euR7vdBqFdAkgGvJua56/view?usp=sharing", width=200)
+st.image("c:/aplicacion/logo.png", width=200) 
 
 # Diccionario actualizado con las configuraciones específicas para cada entidad de origen
 pagas_dict = {

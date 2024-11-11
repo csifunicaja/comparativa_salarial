@@ -10,12 +10,21 @@ pagas_dict = {
     'Liberbank': {'num_pagas_base': 17.5, 'bono_extra': 300}  # Mismos valores que "Cajastur"
 }
 
+# Incluye todos los niveles hasta NIVEL XIII
 salario_dict = {
     'NIVEL I': {'salario_mensual': 2829.985},
     'NIVEL II': {'salario_mensual': 2382.6216666666664},
     'NIVEL III': {'salario_mensual': 2114.545},
     'NIVEL IV': {'salario_mensual': 1999.485},
-    # Añadir otros niveles según tu información
+    'NIVEL V': {'salario_mensual': 1935.9025},
+    'NIVEL VI': {'salario_mensual': 1872.325},
+    'NIVEL VII': {'salario_mensual': 1787.5025},
+    'NIVEL VIII': {'salario_mensual': 1727.5525},
+    'NIVEL IX': {'salario_mensual': 1637.1966666666667},
+    'NIVEL X': {'salario_mensual': 1560.4016666666666},
+    'NIVEL XI': {'salario_mensual': 1391.6116666666667},
+    'NIVEL XII': {'salario_mensual': 1189.6191666666666},
+    'NIVEL XIII': {'salario_mensual': 974.505}
 }
 
 # Función para calcular el salario total ajustado con parámetros específicos
@@ -37,7 +46,7 @@ def calcular_salario_total(entidad, nivel):
     
     return salario_total_anual
 
-# Streamlit interface
+# Interfaz de usuario con Streamlit
 st.title("Comparativa Salarial Unicaja")
 
 # Formulario de entrada de datos

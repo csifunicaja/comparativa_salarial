@@ -6,6 +6,14 @@ st.set_page_config(page_title="Comparativa Salarial Unicaja", page_icon="💼")
 # Cargar el logo desde un archivo local o URL
 st.image("logo.png", width=200)  # Ajusta el tamaño según lo necesario
 
+import os
+
+if os.path.exists("logo.png"):
+    st.image("logo.png", width=200)
+else:
+    st.warning("Logo no encontrado. Verifica la ubicación del archivo.")
+
+
 # Diccionario actualizado con las configuraciones específicas para cada entidad de origen
 pagas_dict = {
     'UNICAJA': {'num_pagas_base': 20.5},

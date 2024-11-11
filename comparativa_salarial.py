@@ -3,6 +3,9 @@
 # Configura el título de la página y el ícono en la pestaña del navegador
 st.set_page_config(page_title="Comparativa Salarial Unicaja", page_icon="💼")
 
+# Cargar el logo desde un archivo local o URL
+st.image("logo.png", width=200)  # Ajusta el tamaño según lo necesario
+
 # Diccionario actualizado con las configuraciones específicas para cada entidad de origen
 pagas_dict = {
     'UNICAJA': {'num_pagas_base': 20.5},
@@ -47,9 +50,6 @@ def calcular_salario_total(entidad, nivel):
 # Función para formatear números al estilo europeo
 def formatear_europeo(valor):
     return f"{valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
-
-# Cargar el logo desde un archivo local o URL
-st.image("logo.png", width=200)  # Ajusta el tamaño según lo necesario
 
 # Interfaz de usuario con Streamlit
 st.title("Comparativa Salarial Unicaja")

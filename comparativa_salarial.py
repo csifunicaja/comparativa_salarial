@@ -1,16 +1,16 @@
 ﻿import streamlit as st
 
-# Diccionario actualizado con la nueva entidad "Liberbank" y el cambio de nombre de "CCM"
+# Diccionario actualizado con las configuraciones específicas para cada entidad de origen
 pagas_dict = {
     'UNICAJA': {'num_pagas_base': 20.5},
     'CCM desde 1.994': {'num_pagas_base': 18.5},
-    'CAJA EXTREMADURA': {'num_pagas_base': 18.5, 'ajuste': 1.0541},  # Incremento del 5,41%
-    'CAJA CANTABRIA': {'num_pagas_base': 20.5, 'ajuste': 0.98},  # Reducción del 2% en el cálculo total
-    'CAJASTUR': {'num_pagas_base': 17.5, 'bono_extra': 300},  # Bono adicional de 300 €
-    'Liberbank': {'num_pagas_base': 17.5, 'bono_extra': 300}  # Mismos valores que "Cajastur"
+    'CAJA EXTREMADURA': {'num_pagas_base': 18.5, 'ajuste': 1.0541},  # Incremento del 5.41%
+    'CAJA CANTABRIA': {'num_pagas_base': 20.5},
+    'CAJASTUR': {'num_pagas_base': 17.5},
+    'Liberbank': {'num_pagas_base': 17.5}  # Mismos valores que "Cajastur"
 }
 
-# Incluye todos los niveles hasta NIVEL XIII
+# Diccionario de salarios base mensuales por nivel
 salario_dict = {
     'NIVEL I': {'salario_mensual': 2829.985},
     'NIVEL II': {'salario_mensual': 2382.6216666666664},
@@ -33,17 +33,12 @@ def calcular_salario_total(entidad, nivel):
     salario_base = salario_dict[nivel]['salario_mensual']
     num_pagas_base = pagas_dict[entidad]['num_pagas_base']
     
-    # Aplicar ajuste de incremento, descuento o bonificación específica para cada entidad
-    if 'ajuste' in pagas_dict[entidad]:  # Ajuste de porcentaje (e.g., 5.41%)
+    # Aplicar ajuste de incremento específico para Caja Extremadura
+    if 'ajuste' in pagas_dict[entidad]:  # Ajuste del 5.41% si existe
         salario_base *= pagas_dict[entidad]['ajuste']
         
     # Calcular salario anual base ajustado
     salario_total_anual = salario_base * num_pagas_base
-    
-    # Aplicar cualquier bono adicional
-    if 'bono_extra' in pagas_dict[entidad]:  # Bonificación fija adicional
-        salario_total_anual += pagas_dict[entidad]['bono_extra']
-    
     return salario_total_anual
 
 # Interfaz de usuario con Streamlit
